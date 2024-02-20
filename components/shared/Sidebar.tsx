@@ -54,7 +54,9 @@ const Sidebar = () => {
           </SignedIn>
           {/* for not signed in */}
           <SignedOut>
-           
+            <Button asChild className="button bg-purple-gradient bg-cover">
+              <Link href="/sign-in">Login</Link>
+            </Button>
           </SignedOut>
         </nav>
       </div>
