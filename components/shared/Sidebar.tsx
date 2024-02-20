@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import LogoSVG from "@/public/assets/images/logo-text.svg";
 import Image from "next/image";
-import { SignedIn } from "@clerk/nextjs";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { navLinks } from "@/constants";
 import { usePathname } from "next/navigation";
 
@@ -16,6 +16,7 @@ const Sidebar = () => {
           <Image src={LogoSVG} alt="logo" width={180} height={28} />
         </Link>
         <nav className="sidebar-nav">
+          {/* for signed in */}
           <SignedIn>
             <ul className="sidebar-nav_elements">
               {navLinks.map((link) => {
@@ -44,6 +45,10 @@ const Sidebar = () => {
               })}
             </ul>
           </SignedIn>
+          {/* for not signed in */}
+          <SignedOut>
+            
+          </SignedOut>
         </nav>
       </div>
     </aside>
