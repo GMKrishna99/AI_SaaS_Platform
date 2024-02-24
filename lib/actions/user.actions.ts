@@ -72,7 +72,7 @@ export async function deleteUser(clerkId: string) {
 
     // If user is not found, throw an error
     if (!userToDelete) {
-      throw new Error("User not found");
+      throw new Error("User not found for deletion");
     }
 
     // Delete the user from the database
