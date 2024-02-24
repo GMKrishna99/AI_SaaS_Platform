@@ -30,15 +30,15 @@ export const connectToDatabase = async () => {
   // If 'MONGODB_URL' is not provided, throw an error
   if (!MONGODB_URL) throw new Error("Missing MONGODB_URL");
 
-  // If 'cashed.promise' doesn't exist, initialize it
-  cached.promise =
-    cached.promise ||
-    // Use mongoose.connect to establish a connection to MongoDB
-    mongoose.connect(MONGODB_URL, { dbName: "aiapp", bufferCommands: false });
+  try {
+    cached.promise =
+      cached.promise ||
+      mongoose.connect(MONGODB_URL, { dbName: "ai", bufferCommands: false });
 
-  // Wait for the promise in cashed.promise to resolve (i.e., for the MongoDB connection to be established)
-  // and assign the resolved value (the Mongoose connection object) to the cashed.conn property
-  cached.conn = await cached.promise;
-
-  return cached.conn; // Return the 'cashed.conn' value after the connection is established
+    cached.conn = await cached.promise;
+    return cached.conn;
+  } catch (error) {
+    console.error("Error connecting to the database:", error);
+    throw error; // Re-throw the error to handle it in the calling code
+  }
 };
