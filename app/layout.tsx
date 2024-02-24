@@ -11,7 +11,7 @@ const IBM_PLEX = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "AI_Saas_App",
+  title: "AI Saas App",
   description: "this site is useful for to generate images ext.",
 };
 
